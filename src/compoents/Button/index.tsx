@@ -30,7 +30,7 @@ type AnchorButtonProps = IButton & React.AnchorHTMLAttributes<HTMLElement>;
 
 export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
 
-const Button: FC<ButtonProps> = (props) => {
+export const Button: FC<ButtonProps> = (props) => {
     const { btnType, children, size, disabled, href, className, ...restProps } = props;
 
     const classes = classNames('btn', className, {

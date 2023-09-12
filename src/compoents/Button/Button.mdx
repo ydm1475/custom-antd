@@ -1,0 +1,27 @@
+import { Meta, Canvas, Story, ArgsTable } from "@storybook/blocks";
+import Button, { ButtonSizeEnum, ButtonType } from ".";
+import * as ButtonStories from "./Button.stories.tsx";
+
+# this is a testing
+
+<style>
+  {`
+        .jsx-title{
+            color: blue;
+        }
+    `}
+</style>
+
+### markdown
+
+```js
+const a = "abc";
+```
+
+<h1 className="jsx-title">我测试一下呗</h1>
+<Canvas>
+  <Story of={ButtonStories.Large} />
+</Canvas>
+<ArgsTable of={Button} />
+<Story of={ButtonStories.Small} />
+<Story of={ButtonStories.Danger} />

@@ -1,7 +1,7 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 
-import Button, { ButtonSizeEnum, ButtonType } from "./index";
+import Button, { ButtonSizeEnum, ButtonType } from ".";
 
 const testProps = {
   btnType: ButtonType.Primary,

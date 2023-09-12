@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "outDir": "build",
+    // 输出的类型
+    "module": "ESNext",
+    // 编译后符合什么样的标准
+    "target": "ES5",
+    // 打包后生成.d.ts文件
+    "declaration": true,
+    "jsx": "react",
+    // tsc编译时候绝对路径的寻找方式，默认是classic
+    "moduleResolution": "Node",
+    // 默认是false, 不支持import React from "react" 支持 import * as React from "react"
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["src"],
+  "exclude": ["src/**/*.test.tsx", "src/**/*.stories.tsx", "src/**/*.mdx"]
+}
