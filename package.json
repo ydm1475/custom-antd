@@ -1,6 +1,6 @@
 {
-  "name": "ydmship",
-  "version": "0.1.3",
+  "name": "ydm-antd",
+  "version": "0.0.1",
   "private": false,
   "main": "build/index.js",
   "module": "build/index.js",
