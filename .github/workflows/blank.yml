@@ -32,4 +32,6 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: all hooks 
         run: |
-          npm run test,
+          npm run test:nowatch,
+          npm run lint,
+          npm run build-storybook
