@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, FC } from "react";
 import Button, { ButtonType, ButtonSizeEnum } from "./compoents/Button";
 import Menu from "./compoents/Menu";
 import MenuItem from "./compoents/Menu/item";
@@ -7,11 +7,36 @@ import { faCoffee, fas } from "@fortawesome/free-solid-svg-icons";
 import Icon from "./compoents/Icon";
 import { library } from "@fortawesome/fontawesome-svg-core";
 library.add(fas);
-function App() {
+
+const Child: FC<any> = ({ id }) => {
+  const [count, setCount] = useState(0);
+  return <div onClick={() => {
+    setCount(count + 1);
+  }}>{count}</div>
+}
+const App = () => {
+  const [bol, setBol] = useState(true);
+
+  return <div style={{ margin: '30px' }}>
+    <Button onClick={() => {
+      setBol(!bol);
+    }}>点击切换</Button>
+    {
+      bol
+        ? <Child id={10} key={10} />
+        : <Child id={11} key={11} />
+    }
+    <div>bol的值： {bol ? 'true' : "false"}</div>
+  </div>
+}
+
+
+function App1() {
   return (
     <div className="App">
       {/* <FontAwesomeIcon icon={faCoffee} size={'10x'}></FontAwesomeIcon> */}
       <Icon icon={faCoffee} theme="primary" size="10x"></Icon>
+
       <Menu
         // mode="vertical"
         defaultOpenSubMenus={['3']}
