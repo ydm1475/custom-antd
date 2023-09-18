@@ -6,9 +6,9 @@ name: TestAndPublish
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -23,15 +23,42 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Checkout codes
+        uses: actions/checkout@v3
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      # - name: Cache dependencies
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: ~/.npm
+      #     key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-npm-cache-
+
+      # # 安装依赖 npm
+      # - name: Install dependencies
+      #   # 如果没有命中缓存才执行 npm install
+      #   if: steps.cache-deps.outputs.cache-hit != 'true'
+      #   run: npm install
+
+      # - name: test
+      #   run: |
+      #     echo ${{ secrets.ACCESS_TOKEN }}
+
+      # # Runs a single command using the runners shell
+      # - name: build storyBook
+      #   run: npm run build-storybook
 
       # Runs a set of commands using the runners shell
-      - name: all hooks 
+      - name: Deploy to GitHub Pages
+        env:
+          # Github 仓库
+          GITHUB_REPO: github.com/ydm1475/ydm1475.github.io.git
         run: |
-          npm run test:nowatch,
-          npm run lint,
-          npm run build-storybook
+          cd ./storybook-static && git init && git add .
+          git config user.name "ydm1475"
+          git config user.email "18848952893@163.com"
+          git commit -m 'deploy'
+          echo token:${{secrets.DEPLOY_TOKEN}}
+          echo secrets:${{secrets}}
+          echo "https://${{secrets.DEPLOY_TOKEN}}@$GITHUB_REPO"
+          git push --force --quiet "https://${{secrets.DEPLOY_TOKEN}}@$GITHUB_REPO" main:main
