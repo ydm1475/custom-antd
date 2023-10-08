@@ -26,27 +26,27 @@ jobs:
       - name: Checkout codes
         uses: actions/checkout@v3
 
-      # - name: Cache dependencies
-      #   uses: actions/cache@v3
-      #   with:
-      #     path: ~/.npm
-      #     key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-npm-cache-
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-cache-
 
-      # # 安装依赖 npm
-      # - name: Install dependencies
-      #   # 如果没有命中缓存才执行 npm install
-      #   if: steps.cache-deps.outputs.cache-hit != 'true'
-      #   run: npm install
+      # 安装依赖 npm
+      - name: Install dependencies
+        # 如果没有命中缓存才执行 npm install
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: npm install
 
-      # - name: test
-      #   run: |
-      #     echo ${{ secrets.ACCESS_TOKEN }}
+      - name: test
+        run: |
+          echo ${{ secrets.ACCESS_TOKEN }}
 
-      # # Runs a single command using the runners shell
-      # - name: build storyBook
-      #   run: npm run build-storybook
+      # Runs a single command using the runners shell
+      - name: build storyBook
+        run: npm run build-storybook
 
       # Runs a set of commands using the runners shell
       - name: Deploy to GitHub Pages

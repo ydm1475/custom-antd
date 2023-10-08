@@ -5,7 +5,6 @@ import { MenuItemProps } from "./item";
 
 import { CSSTransition } from "react-transition-group";
 import { Icon } from "../index";
-import '@testing-library/jest-dom/extend-expect';
 export interface SubMenuProps {
     index?: string;
     title: string;
