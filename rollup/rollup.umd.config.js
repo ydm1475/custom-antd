@@ -7,7 +7,7 @@ const config = {
   output: [
     {
       name: "ydmAntd",
-      file: "dist/index.umd.js",
+      file: "build/index.umd.js",
       format: "umd",
       export: "named",
       globals: {

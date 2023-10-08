@@ -1,0 +1,38 @@
+import { Meta, Canvas, Story, ArgsTable } from "@storybook/blocks";
+import Button, { ButtonSizeEnum, ButtonType } from ".";
+import * as ButtonStories from "./Button.stories.tsx";
+
+# Button Component
+
+<style>
+  {`
+        .jsx-title{
+            color: blue;
+        }
+    `}
+</style>
+
+```js
+// example
+import React from "react";
+import Button, { ButtonType } from "ydm-antd";
+
+function App() {
+  return (
+    <div>
+      <Button btnType={ButtonType.Primary}>这是一个测试按钮来测试</Button>
+    </div>
+  );
+}
+
+export default App;
+```
+
+<h1 className="jsx-title">自定义展示</h1>
+<Canvas>
+  <Story of={ButtonStories.Large} />
+  <Story of={ButtonStories.Small} />
+  <Story of={ButtonStories.Danger} />
+  <Story of={ButtonStories.Link} />
+</Canvas>
+<ArgsTable of={Button} />

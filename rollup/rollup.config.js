@@ -4,31 +4,15 @@ import commonjs from "@rollup/plugin-commonjs";
 import json from "@rollup/plugin-json";
 import sass from "rollup-plugin-sass";
 
-const tsconfigOverride = {
-  compilerOptions: {
-    // 打包后生成.d.ts文件
-    declaration: true,
-  },
-  include: ["src"],
-  exclude: [
-    "src/**/*.test.tsx",
-    "src/**/*.stories.tsx",
-    "src/**/*.mdx",
-    "src/setupTests.js",
-  ],
-};
-
 const config = {
-  input: "./src/index.tsx",
+  input: "./components/index.js",
   plugins: [
     nodeResolve(),
     commonjs(),
     json(),
-    typescript({
-      tsconfigOverride,
-    }),
+    typescript(),
     sass({
-      output: "dist/index.css",
+      output: "build/index.css",
     }),
   ],
 };

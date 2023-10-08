@@ -4,9 +4,13 @@ import excludeDependenciesFromBundle from "rollup-plugin-exclude-dependencies-fr
 
 const config = {
   ...basicConfig,
+  input: {
+    main: "./src/index.tsx",
+    button: "./src/compoents/Button/index.tsx",
+  },
   output: [
     {
-      file: "dist/index.es.js",
+      dir: "build",
       format: "es",
     },
   ],

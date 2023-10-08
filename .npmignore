@@ -1,0 +1,16 @@
+.github
+.husky
+.storybook
+.vscode
+
+/components
+/node_modules
+/rollup
+/demo
+
+.gitignore
+.npmignore
+
+package-lock.json
+tsconfig.build.json
+tsconfig.json

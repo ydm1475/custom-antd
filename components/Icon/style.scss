@@ -1,0 +1,7 @@
+@import "../styles/style.scss";
+
+@each $key, $val in $theme-colors {
+  .icon-#{$key} {
+    color: $val;
+  }
+}
