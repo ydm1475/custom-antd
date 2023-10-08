@@ -1,6 +1,7 @@
+import "@testing-library/jest-dom/extend-expect";
+
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
-
 import Button, { ButtonSizeEnum, ButtonType } from ".";
 
 const testProps = {

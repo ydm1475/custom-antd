@@ -2,7 +2,7 @@
 /* eslint-disable testing-library/no-node-access */
 import React, { FC } from "react";
 import { RenderResult, fireEvent, render, screen, cleanup, waitFor } from "@testing-library/react";
-
+import '@testing-library/jest-dom/extend-expect';
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 

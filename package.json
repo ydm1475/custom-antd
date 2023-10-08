@@ -1,6 +1,6 @@
 {
   "name": "ydm-antd",
-  "version": "0.0.8",
+  "version": "0.0.14",
   "private": false,
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -17,9 +17,9 @@
     "react-dom": ">= 16.8.0"
   },
   "scripts": {
-    "lint": "eslint --ext js,ts,tsx src",
+    "lint": "eslint --ext js,ts,tsx components",
     "start": "webpack serve",
-    "test:nowatch": "cross-env CI=true react-scripts test",
+    "test": "npx jest",
     "build": "npm run clean && cross-env NODE_ENV=production NODE_OPTIONS=\"--experimental-json-modules\" gulp && npm run build-umd && npm run build-css",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
@@ -30,10 +30,13 @@
     "clean:lib": "rimraf lib",
     "clean:es": "rimraf es",
     "clean:build": "rimraf build",
+    "cpublish": "node ./bin/dev.js && npm run build && npm publish",
     "clean": "npm run clean:lib && npm run clean:es &&  npm run clean:build"
   },
   "husky": {
-    "hooks": {}
+    "hooks": {
+      "pre-commit": "npm run test && npm run lint"
+    }
   },
   "eslintConfig": {
     "extends": [
@@ -55,6 +58,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.23.0",
     "@rollup/plugin-commonjs": "^25.0.4",
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "^15.2.1",
@@ -76,7 +80,9 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/classnames": "^2.3.1",
+    "@types/jest": "^29.5.5",
     "@types/react-transition-group": "^4.4.6",
+    "babel-jest": "^29.7.0",
     "babel-loader": "^9.1.3",
     "babel-plugin-named-exports-order": "^0.0.2",
     "cross-env": "^7.0.3",
@@ -88,6 +94,7 @@
     "gulp-typescript": "^6.0.0-alpha.1",
     "html-webpack-plugin": "^5.5.3",
     "husky": "^8.0.3",
+    "jest-environment-jsdom": "^29.7.0",
     "merge2": "^1.4.1",
     "node-sass": "^7.0.3",
     "prop-types": "^15.8.1",
@@ -102,6 +109,7 @@
     "sass-loader": "^13.3.2",
     "storybook": "^7.4.0",
     "style-loader": "^3.3.3",
+    "ts-jest": "^29.1.1",
     "ts-loader": "^9.5.0",
     "web-vitals": "^2.1.4",
     "webpack": "^5.88.2",

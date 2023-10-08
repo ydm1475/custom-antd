@@ -3,10 +3,12 @@
 .storybook
 .vscode
 
+/bin
 /components
 /node_modules
 /rollup
 /demo
+/public
 
 .gitignore
 .npmignore
