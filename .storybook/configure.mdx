@@ -1,0 +1,95 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="快速上手" />
+
+### 1、安装
+
+```js
+npm install ydm-antd --save
+```
+
+### 2、使用
+
+需在项目的根节点引入 CSS 文件`import "ydm-antd/build/index.css"`
+`
+
+```js
+// 完整示例
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Button } from "ydm-antd";
+
+import "ydm-antd/build/index.css";
+
+function App() {
+  return (
+    <div>
+      <Button btnType="primary">这是一个测试按钮来测试</Button>
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
+```
+
+### 3、按需加载
+
+`ydm-antd`默认支持基 ES Modules 的 Tree Shaking , 直接引入 `import { Button } from "ydm-antd"` 就有按需加载的效果。
+
+<div style={{ height: "20px" }}></div>
+### 4、umd 格式
+
+<style>
+  {`
+        .content{
+            font-size: 14px;
+        }
+    `}
+</style>
+
+<div className="content">
+  js 文件：`https://unpkg.com/ydm-antd@0.0.14/build/index.umd.js`
+</div>
+
+<div className="content">
+  css 文件`https://unpkg.com/ydm-antd@0.0.14/build/index.css`
+</div>
+
+<div className="content">
+  十分不推荐该用法，这将会无法获取最新组件库的功能或已修复的问题。
+</div>
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/ydm-antd@0.0.14/build/index.css"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.production.min.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"
+  ></script>
+  <script src="https://unpkg.com/ydm-antd@0.0.14/build/index.umd.js"></script>
+  <script>
+    const container = document.getElementById("root");
+    const root = ReactDOM.createRoot(container);
+    root.render(
+      React.createElement(ydmAntd.Button, { btnType: "primary" }, "测试按钮")
+    );
+  </script>
+</html>
+```
